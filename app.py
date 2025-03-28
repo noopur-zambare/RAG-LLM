@@ -57,9 +57,24 @@ st.markdown("""
         border: 2px solid #00FFAA;
         cursor: pointer;
     }
+    .stSelectbox select {
+  
+        color: black;
+        border: 1px solid #3E8E41;
+        border-radius: 5px;
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    .stSelectbox select {
+        outline: none;
+        border-color: black;
+    }
     
     </style>
     """, unsafe_allow_html=True)
+
+
 
 # Slider to toggle between themes (0 = Night, 1 = Day)
 theme_value = st.slider(
@@ -129,9 +144,13 @@ if st.session_state.theme == "night":
             padding: 15px;
         }
 
-        h1, h2, h3 {
+        h1, h2, h3, h4,h5, h6 {
             color: #00FFAA !important;
         }
+                .stSelectbox select:focus {
+        outline: none;
+        border-color: #2E7D32;
+    }
         </style>
         """, unsafe_allow_html=True)
 else:
@@ -187,9 +206,13 @@ else:
             padding: 15px;
         }
 
-        h1, h2, h3 {
+        h1, h2, h3, h4, h5, h6 {
             color: #4CAF50 !important;
         }
+                .stSelectbox select:focus {
+        outline: none;
+        border-color: #2E7D32;
+    }
         </style>
         """, unsafe_allow_html=True)
 
@@ -202,9 +225,33 @@ Context: {document_context}
 Answer:
 """
 PDF_STORAGE_PATH = 'data/'
-EMBEDDING_MODEL = OllamaEmbeddings(model="deepseek-r1:1.5b")
+
+# UI Configuration
+
+st.title("RAG-LLM")
+st.markdown("### Chat with your document")
+st.markdown("---")
+st.markdown("###### Select a Model")
+embedding_model_choice = st.selectbox(
+    label='',
+    options=["deepseek-r1:1.5b", "another-model-1", "another-model-2"],
+    index=0,
+    help="Choose the embedding model for document analysis."
+)
+
+# Define models based on the selected option
+if embedding_model_choice == "deepseek-r1:1.5b":
+    EMBEDDING_MODEL = OllamaEmbeddings(model="deepseek-r1:1.5b")
+    LANGUAGE_MODEL = OllamaLLM(model="deepseek-r1:1.5b")
+elif embedding_model_choice == "llama3.3":
+    EMBEDDING_MODEL = OllamaEmbeddings(model="llama3.3")
+    LANGUAGE_MODEL = OllamaLLM(model="llama3.3")
+elif embedding_model_choice == "mixtral":
+    EMBEDDING_MODEL = OllamaEmbeddings(model="mixtral")
+    LANGUAGE_MODEL = OllamaLLM(model="mixtral")
+
 DOCUMENT_VECTOR_DB = InMemoryVectorStore(EMBEDDING_MODEL)
-LANGUAGE_MODEL = OllamaLLM(model="deepseek-r1:1.5b")
+
 
 
 def save_uploaded_file(uploaded_file):
@@ -238,11 +285,7 @@ def generate_answer(user_query, context_documents):
     return response_chain.invoke({"user_query": user_query, "document_context": context_text})
 
 
-# UI Configuration
 
-st.title("RAG-LLM")
-st.markdown("### Chat with your document")
-st.markdown("---")
 
 # File Upload Section
 uploaded_pdf = st.file_uploader(
