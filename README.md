@@ -1,6 +1,8 @@
-## Demo
+# RAG LLM
 RAG (Retrieval-Augmented Generation) combines retrieval and generation to improve the performance of language models, especially for tasks like question answering, summarization, and more. The core idea is to use external documents which acts like knowledge source to retrieve relevant information before generating a response. This approach allows models to handle larger knowledge bases and provide more accurate and relevant answers.
 
+## Demo
+[!Demo](demo.mp4)
 ## To install Ollama and run the application
 Download it from the official website, then run the following command.
 
