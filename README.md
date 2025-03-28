@@ -6,8 +6,8 @@ Download it from the official website, then run the following command.
 
 ```
 ollama run deepseek-r1:1.5b
-ollama run 
-ollama run MistralSmall3
+ollama run llama3.3
+ollama run mixtral
 ```
 
 ```
