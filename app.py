@@ -234,7 +234,7 @@ st.markdown("---")
 st.markdown("###### Select a Model")
 embedding_model_choice = st.selectbox(
     label='',
-    options=["deepseek-r1:1.5b", "another-model-1", "another-model-2"],
+    options=["deepseek-r1:1.5b", "llama3.3", "mixtral"],
     index=0,
     help="Choose the embedding model for document analysis."
 )
