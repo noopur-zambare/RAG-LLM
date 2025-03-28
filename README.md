@@ -22,7 +22,7 @@ streamlit run app.py
 - LangChain for document loading, text splitting, and creating a vector database.
 - Ollama for using pre-trained language models to generate document embeddings and provide responses.
 
-## Instructions:
+## Instructions
 - Upload a PDF document.
 - Ask questions about the document once it's processed.
 - Toggle between themes for a better visual experience.
