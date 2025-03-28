@@ -239,7 +239,7 @@ def generate_answer(user_query, context_documents):
 # UI Configuration
 
 st.title("RAG-LLM")
-st.markdown("###chat with your document")
+st.markdown("### Chat with your document")
 st.markdown("---")
 
 # File Upload Section
