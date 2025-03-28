@@ -57,6 +57,7 @@ st.markdown("""
         border: 2px solid #00FFAA;
         cursor: pointer;
     }
+    
     </style>
     """, unsafe_allow_html=True)
 
@@ -70,8 +71,9 @@ theme_value = st.slider(
     key="theme_slider",
     help="Use this slider to switch between day and night themes.",
     on_change=lambda: toggle_theme(theme_value),
-    label_visibility="hidden"
+    label_visibility="hidden",
 )
+
 
 # Apply theme via CSS based on selected theme
 if st.session_state.theme == "night":
