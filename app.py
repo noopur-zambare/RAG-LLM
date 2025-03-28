@@ -22,7 +22,7 @@ st.markdown("""
     .stSlider {
         position: fixed;
         top: -170px !important;
-        right: 100px;  /* Moved more to left */
+        right: 100px; 
         width: 30px !important;
         max-width: 30px !important;
         z-index: 1000;
@@ -238,8 +238,8 @@ def generate_answer(user_query, context_documents):
 
 # UI Configuration
 
-st.title("📘 DocuMind AI")
-st.markdown("### Your Intelligent Document Assistant")
+st.title("RAG-LLM")
+st.markdown("###chat with your document")
 st.markdown("---")
 
 # File Upload Section
